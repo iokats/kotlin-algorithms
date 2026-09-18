@@ -1,7 +1,7 @@
 package com.iekatsatos.algorithms.graph.search
 
 import com.iekatsatos.algorithms.graph.Edge
-import com.iekatsatos.algorithms.graph.AdjacencyListGraph
+import com.iekatsatos.algorithms.graph.representation.AdjacencyListGraph
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import kotlin.test.assertEquals

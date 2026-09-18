@@ -1,5 +1,6 @@
-package com.iekatsatos.algorithms.graph
+package com.iekatsatos.algorithms.graph.representation
 
+import com.iekatsatos.algorithms.graph.Edge
 import org.junit.jupiter.api.assertThrows
 import kotlin.test.Test
 import kotlin.test.assertEquals

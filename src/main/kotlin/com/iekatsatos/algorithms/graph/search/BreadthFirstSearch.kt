@@ -5,6 +5,10 @@ import com.iekatsatos.algorithms.graph.Graph
 /**
  * BFS (Breadth-First Search) is a search algorithm that, given a starting vertex, explores vertices in layers.
  *
+ * As a result, it finds the shortest path from the starting vertex to any reachable vertex (if there are multiple
+ * paths from the starting vertex to a given vertex, this algorithm finds the shortest one). Here, distance is
+ * defined as the number of edges on the path between the starting vertex and a given reachable vertex.
+ *
  * It first explores all vertices directly connected to the starting vertex (Layer 1). Then it explores the vertices
  * directly connected to the vertices in Layer 1, and so on. Every vertex is explored once, and therefore belongs to
  * exactly one layer — each explored vertex is marked as explored to enforce this.

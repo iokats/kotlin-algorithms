@@ -1,7 +1,10 @@
-package com.iekatsatos.algorithms.graph
+package com.iekatsatos.algorithms.graph.representation
+
+import com.iekatsatos.algorithms.graph.Edge
+import com.iekatsatos.algorithms.graph.Graph
 
 /**
- * A [Graph] implementation backed by an adjacency list.
+ * A [com.iekatsatos.algorithms.graph.Graph] implementation backed by an adjacency list.
  *
  * The graph is constructed from an explicit set of [vertices] and [edges], internally, it eagerly builds a `T -> neighbors`
  * lookup ([adjacencyList]) so that [neighborsOf] runs in constant time rather than scanning [edges] on every call.
