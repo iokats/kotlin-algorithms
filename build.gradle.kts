@@ -2,7 +2,7 @@ plugins {
     kotlin("jvm") version "2.3.0"
 }
 
-group = "com.iekatsatos.practices"
+group = "com.iekatsatos.algortihms"
 version = "1.0-SNAPSHOT"
 
 repositories {
