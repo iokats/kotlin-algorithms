@@ -21,8 +21,8 @@ import com.iekatsatos.algorithms.graph.Graph
  * @constructor validates that [edges] only reference declared [vertices] and builds the internal adjacency list.
  */
 data class AdjacencyListGraph<T>(
-    val vertices: Set<T> = setOf(),
-    val edges: Set<Edge<T>> = setOf()
+    override val vertices: Set<T> = setOf(),
+    override val edges: Set<Edge<T>> = setOf()
 ): Graph<T> {
 
     private val adjacencyList: MutableMap<T, MutableSet<T>> = mutableMapOf()

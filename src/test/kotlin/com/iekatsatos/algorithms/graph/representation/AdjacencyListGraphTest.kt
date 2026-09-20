@@ -76,7 +76,7 @@ class AdjacencyListGraphTest {
 
         // then
         assertEquals("Vertex $undefinedVertex" +
-                " does not exist", exception.message)
+                " does not exist.", exception.message)
     }
 
     @Test

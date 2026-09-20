@@ -34,11 +34,8 @@ object BreadthFirstSearch {
      * @throws NoSuchElementException if [startingVertex] is not a vertex of [graph]
      */
     fun <T> search(graph: Graph<T>, startingVertex: T): List<T> {
-        val exploredVertices: MutableSet<T> = mutableSetOf()
-        val queue: ArrayDeque<T> = ArrayDeque()
-
-        exploredVertices.add(startingVertex)
-        queue.addLast(startingVertex)
+        val exploredVertices: MutableSet<T> = mutableSetOf(startingVertex)
+        val queue: ArrayDeque<T> = ArrayDeque<T>().apply { addLast(startingVertex) }
 
         val traversalOrder: MutableList<T> = mutableListOf()
 
