@@ -17,23 +17,38 @@ import com.iekatsatos.algorithms.graph.Graph
  * only once every vertex discovered before it has been processed. This guarantees the algorithm fully explores one layer
  * before moving on to the next.
  *
- * The time complexity of the algorithm is linear, O(n + m), where `n` is the number of vertices and `m` is the number
- * of edges.
+ * The time complexity is O(n + m) without a comparator. With a comparator, each vertex's neighbors are sorted, which
+ * makes it O(n + m log n).
  */
-object BreadthFirstSearch {
+object BreadthFirstSearch: GraphSearchAlgorithm{
 
     /**
      * Performs a breadth-first search on [graph], starting from [startingVertex], and returns a list with all the
      * reachable vertices from this starting vertex.
      *
+     * Within each layer, vertices are visited in the order their parents discovered them. When a [comparator] is
+     * given, the neighbors of every vertex are sorted by it before being enqueued, so the traversal order is
+     * deterministic and follows the comparator. Without a comparator, neighbors are visited in the graph's own
+     * iteration order.
+     *
+     * The time complexity is O(n + m) without a comparator. With a comparator, each vertex's neighbors are sorted,
+     * which makes it O(n + m log n).
+     *
      * @param T the vertex type
      * @param graph the graph to search
      * @param startingVertex the vertex to begin the search from
+     * @param comparator the ordering used to sort the neighbors of each explored vertex, or `null` to use the
+     *   graph's own iteration order
      * @return a list of all vertices reachable from [startingVertex], including [startingVertex] itself as the first
      *   element, in the order they were explored (i.e. layer by layer, breadth-first)
      * @throws NoSuchElementException if [startingVertex] is not a vertex of [graph]
      */
-    fun <T> search(graph: Graph<T>, startingVertex: T): List<T> {
+    override fun <T> search(
+        graph: Graph<T>,
+        startingVertex: T,
+        comparator: Comparator<in T>?
+    ): List<T> {
+
         val exploredVertices: MutableSet<T> = mutableSetOf(startingVertex)
         val queue: ArrayDeque<T> = ArrayDeque<T>().apply { addLast(startingVertex) }
 
@@ -44,7 +59,7 @@ object BreadthFirstSearch {
             val currentVertex = queue.removeFirst()
             traversalOrder.add(currentVertex)
 
-            for (neighbor in graph.neighborsOf(currentVertex)) {
+            for (neighbor in graph.orderedNeighborsOf(currentVertex, comparator)) {
                 if (neighbor !in exploredVertices) {
                     exploredVertices.add(neighbor)
                     queue.addLast(neighbor)

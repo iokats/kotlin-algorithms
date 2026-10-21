@@ -32,15 +32,11 @@ data class AdjacencyListGraph<T>(
         validateEdgeVertices()
     }
 
-    /**
-     * Returns all the adjacent vertices, which are connected by an [Edge] to the given [vertex].
-     *
-     * @param vertex the vertex whose neighbors are requested
-     * @return the set of vertices adjacent to [vertex], or an empty set if it has none
-     * @throws NoSuchElementException if [vertex] is not a vertex of the graph
-     */
     override fun neighborsOf(vertex: T): Set<T> =
         adjacencyList[vertex]?: throw NoSuchElementException("Vertex $vertex does not exist.")
+
+    override fun neighborsOf(vertex: T, comparator: Comparator<in T>): List<T> =
+        neighborsOf(vertex).sortedWith(comparator)
 
     private fun validateEdgeVertices() {
 
