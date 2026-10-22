@@ -5,8 +5,9 @@ import com.iekatsatos.algorithms.graph.representation.AdjacencyListGraph
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import kotlin.test.assertEquals
+import kotlin.test.assertFailsWith
 
-class DepthFirstSearchTest {
+class DFSRecursiveTest {
 
     @Test
     fun search_whenStartingVertexNotFound_thenThrowsException() {
@@ -26,7 +27,7 @@ class DepthFirstSearchTest {
 
         // when
         val exception = assertThrows<NoSuchElementException> {
-            DepthFirstSearch.search(graph = graph, startingVertex = startingVertex)
+            DFSRecursive.search(graph = graph, startingVertex = startingVertex)
         }
 
         // then
@@ -41,7 +42,7 @@ class DepthFirstSearchTest {
         val graph = AdjacencyListGraph(vertices = vertices)
 
         // when
-        val reachableVertices = DepthFirstSearch.search(graph = graph, startingVertex = 's')
+        val reachableVertices = DFSRecursive.search(graph = graph, startingVertex = 's')
 
         // then
         assertEquals(listOf('s'), reachableVertices)
@@ -55,7 +56,7 @@ class DepthFirstSearchTest {
         val graph = AdjacencyListGraph(vertices = vertices)
 
         // when
-        val reachableVertices = DepthFirstSearch.search(graph = graph, startingVertex = 's')
+        val reachableVertices = DFSRecursive.search(graph = graph, startingVertex = 's')
 
         // then
         assertEquals(listOf('s'), reachableVertices)
@@ -77,7 +78,7 @@ class DepthFirstSearchTest {
         val graph = AdjacencyListGraph(vertices = vertices, edges = edges)
 
         // when
-        val reachableVertices = DepthFirstSearch.search(graph = graph, startingVertex = 's')
+        val reachableVertices = DFSRecursive.search(graph = graph, startingVertex = 's')
 
         // then
         assertEquals(listOf('s', 'a', 'b', 'c', 'd', 'e'), reachableVertices)
@@ -100,7 +101,7 @@ class DepthFirstSearchTest {
         val graph = AdjacencyListGraph(vertices = vertices, edges = edges)
 
         // when
-        val reachableVertices = DepthFirstSearch.search(graph = graph, startingVertex = 's')
+        val reachableVertices = DFSRecursive.search(graph = graph, startingVertex = 's')
 
         // then
         assertEquals(listOf('s', 'a', 'c', 'd', 'b'), reachableVertices)
@@ -123,7 +124,7 @@ class DepthFirstSearchTest {
         val graph = AdjacencyListGraph(vertices = vertices, edges = edges)
 
         // when
-        val reachableVertices = DepthFirstSearch.search(graph = graph, startingVertex = 's')
+        val reachableVertices = DFSRecursive.search(graph = graph, startingVertex = 's')
 
         // then
         assertEquals(listOf('s', 'a', 'b', 'c', 'd', 'e'), reachableVertices)
@@ -148,7 +149,7 @@ class DepthFirstSearchTest {
         val graph = AdjacencyListGraph(vertices = vertices, edges = edges)
 
         // when
-        val reachableVertices = DepthFirstSearch.search(graph = graph, startingVertex = 's')
+        val reachableVertices = DFSRecursive.search(graph = graph, startingVertex = 's')
 
         // then
         assertEquals(listOf('s', 'a', 'c', 'b', 'd', 'e'), reachableVertices)
@@ -171,21 +172,24 @@ class DepthFirstSearchTest {
         val graph = AdjacencyListGraph(vertices = vertices, edges = edges)
 
         // when
-        val reachableVertices = DepthFirstSearch.search(graph = graph, startingVertex = 's')
+        val reachableVertices = DFSRecursive.search(graph = graph, startingVertex = 's')
 
         // then
         assertEquals(listOf('s', 'a', 'b', 'c', 'd', 'e'), reachableVertices)
     }
 
     @Test
-    fun search_whenDeepLinearGraph_thenDoesNotThrowStackOverflow() {
+    fun search_whenDeepLinearGraph_thenThrowsStackOverflow() {
+
+        // given
         val size = 10_000
         val vertices = (0..size).toSet()
         val edges = (0 until size).map { Edge(it, it + 1) }.toSet()
         val graph = AdjacencyListGraph(vertices = vertices, edges = edges)
 
-        val result = DepthFirstSearch.search(graph = graph, startingVertex = 0)
-
-        assertEquals(size + 1, result.size)
+        // when - then
+        assertFailsWith<StackOverflowError> {
+            DFSRecursive.search(graph = graph, startingVertex = 0)
+        }
     }
 }

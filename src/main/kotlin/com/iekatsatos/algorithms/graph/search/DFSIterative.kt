@@ -11,8 +11,8 @@ import com.iekatsatos.algorithms.graph.Graph
  * explored vertex that still has unexplored neighbors and continues from there. Every vertex is explored once -- each
  * explored vertex is marked as explored to enforce this.
  *
- * Unlike BFS, DFS does not find shortest paths: the path by which a vertex is first reached depends on the order in
- * which neighbors are visited, and is not necessarily the one with the fewest edges.
+ * Unlike BFS, DFS does not find the shortest paths: the path by which a vertex is first reached depends on the order
+ * in which neighbors are visited, and is not necessarily the one with the fewest edges.
  *
  * Vertices awaiting exploration are kept in a LIFO stack: the most recently discovered vertex is the first to be
  * explored. This guarantees the algorithm fully explores everything reachable through a vertex before returning to
@@ -22,11 +22,11 @@ import com.iekatsatos.algorithms.graph.Graph
  * The time complexity of the algorithm is linear, O(n + m), where `n` is the number of vertices and `m` is the number
  * of edges (O(n + m log n) when a comparator is used to order neighbors).
  */
-object DepthFirstSearch: GraphSearchAlgorithm {
+object DFSIterative: GraphSearchAlgorithm {
 
     /**
-     * Performs a depth-first search on [graph], starting from [startingVertex], and returns a list with all the
-     * reachable vertices from this starting vertex.
+     * Performs an iterative depth-first search on [graph], starting from [startingVertex], and returns a list with all
+     * the reachable vertices from this starting vertex.
      *
      * When a [comparator] is given, the neighbors of every vertex are sorted by it, and the traversal descends into
      * the first neighbor in that order before the others. To achieve this with a stack, neighbors are pushed in
