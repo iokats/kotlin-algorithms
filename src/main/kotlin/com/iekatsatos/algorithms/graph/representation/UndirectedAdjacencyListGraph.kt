@@ -1,7 +1,7 @@
 package com.iekatsatos.algorithms.graph.representation
 
 import com.iekatsatos.algorithms.graph.Edge
-import com.iekatsatos.algorithms.graph.Graph
+import com.iekatsatos.algorithms.graph.UndirectedGraph
 
 /**
  * A [com.iekatsatos.algorithms.graph.Graph] implementation backed by an adjacency list.
@@ -16,29 +16,18 @@ import com.iekatsatos.algorithms.graph.Graph
  * @param T the vertex type
  * @property vertices the vertices in the graph
  * @property edges the edges in the graph, connecting pairs of [vertices]. Every vertex referenced by an edge must also
- *   appear in [vertices], or construction fails — see [validateEdgeVertices].
+ *   appear in [vertices], or construction fails.
  *
  * @constructor validates that [edges] only reference declared [vertices] and builds the internal adjacency list.
  */
-data class AdjacencyListGraph<T>(
+data class UndirectedAdjacencyListGraph<T>(
     override val vertices: Set<T> = setOf(),
     override val edges: Set<Edge<T>> = setOf()
-): Graph<T> {
+): UndirectedGraph<T> {
 
     private val adjacencyList: MutableMap<T, MutableSet<T>> = mutableMapOf()
 
     init {
-
-        validateEdgeVertices()
-    }
-
-    override fun neighborsOf(vertex: T): Set<T> =
-        adjacencyList[vertex]?: throw NoSuchElementException("Vertex $vertex does not exist.")
-
-    override fun neighborsOf(vertex: T, comparator: Comparator<in T>): List<T> =
-        neighborsOf(vertex).sortedWith(comparator)
-
-    private fun validateEdgeVertices() {
 
         require(edges.all { it.u in vertices && it.v in vertices }) {
             "Edges contain undeclared vertices."
@@ -48,6 +37,12 @@ data class AdjacencyListGraph<T>(
 
         edges.forEach { updateAdjacencyList(it) }
     }
+
+    override fun neighborsOf(vertex: T): Set<T> =
+        adjacencyList[vertex]?: throw NoSuchElementException("Vertex $vertex does not exist.")
+
+    override fun neighborsOf(vertex: T, comparator: Comparator<in T>): List<T> =
+        neighborsOf(vertex).sortedWith(comparator)
 
     private fun updateAdjacencyList(edge: Edge<T>) {
 

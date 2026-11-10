@@ -1,7 +1,7 @@
 package com.iekatsatos.algorithms.graph.connectedcomponents
 
 import com.iekatsatos.algorithms.graph.Edge
-import com.iekatsatos.algorithms.graph.representation.AdjacencyListGraph
+import com.iekatsatos.algorithms.graph.representation.UndirectedAdjacencyListGraph
 import org.junit.jupiter.api.Test
 import kotlin.test.assertEquals
 
@@ -11,7 +11,7 @@ class UndirectedConnectedComponentTest {
     fun findComponents_whenEmptyGraph_thenReturnsEmptyMap() {
 
         // given
-        val graph = AdjacencyListGraph<Char>(vertices = emptySet())
+        val graph = UndirectedAdjacencyListGraph<Char>(vertices = emptySet())
 
         // when
         val componentByVertex = UndirectedConnectedComponent.findComponents(graph = graph)
@@ -25,7 +25,7 @@ class UndirectedConnectedComponentTest {
 
         // given
         val vertices = setOf('a')
-        val graph = AdjacencyListGraph(vertices = vertices)
+        val graph = UndirectedAdjacencyListGraph(vertices = vertices)
 
         // when
         val componentByVertex = UndirectedConnectedComponent.findComponents(graph = graph)
@@ -46,7 +46,7 @@ class UndirectedConnectedComponentTest {
             Edge('c', 'd')
         )
 
-        val graph = AdjacencyListGraph(vertices = vertices, edges = edges)
+        val graph = UndirectedAdjacencyListGraph(vertices = vertices, edges = edges)
 
         // when
         val componentByVertex = UndirectedConnectedComponent.findComponents(graph = graph)
@@ -67,7 +67,7 @@ class UndirectedConnectedComponentTest {
 
         // given
         val vertices = setOf('a', 'b', 'c', 'd')
-        val graph = AdjacencyListGraph(vertices = vertices)
+        val graph = UndirectedAdjacencyListGraph(vertices = vertices)
 
         // when
         val componentByVertex = UndirectedConnectedComponent.findComponents(graph = graph)
@@ -96,7 +96,7 @@ class UndirectedConnectedComponentTest {
             // 'z' is isolated (Component 3)
         )
 
-        val graph = AdjacencyListGraph(vertices = vertices, edges = edges)
+        val graph = UndirectedAdjacencyListGraph(vertices = vertices, edges = edges)
 
         // when
         val componentByVertex = UndirectedConnectedComponent.findComponents(graph = graph)
@@ -124,7 +124,7 @@ class UndirectedConnectedComponentTest {
             Edge('c', 'a')
         )
 
-        val graph = AdjacencyListGraph(vertices = vertices, edges = edges)
+        val graph = UndirectedAdjacencyListGraph(vertices = vertices, edges = edges)
 
         // when
         val componentByVertex = UndirectedConnectedComponent.findComponents(graph = graph)

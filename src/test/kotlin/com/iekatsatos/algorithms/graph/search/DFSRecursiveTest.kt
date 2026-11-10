@@ -1,7 +1,7 @@
 package com.iekatsatos.algorithms.graph.search
 
 import com.iekatsatos.algorithms.graph.Edge
-import com.iekatsatos.algorithms.graph.representation.AdjacencyListGraph
+import com.iekatsatos.algorithms.graph.representation.UndirectedAdjacencyListGraph
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import kotlin.test.assertEquals
@@ -23,7 +23,7 @@ class DFSRecursiveTest {
             Edge('d', 'e')
         )
 
-        val graph = AdjacencyListGraph(vertices = vertices, edges = edges)
+        val graph = UndirectedAdjacencyListGraph(vertices = vertices, edges = edges)
 
         // when
         val exception = assertThrows<NoSuchElementException> {
@@ -39,7 +39,7 @@ class DFSRecursiveTest {
 
         // given
         val vertices = setOf('s')
-        val graph = AdjacencyListGraph(vertices = vertices)
+        val graph = UndirectedAdjacencyListGraph(vertices = vertices)
 
         // when
         val reachableVertices = DFSRecursive.search(graph = graph, startingVertex = 's')
@@ -53,7 +53,7 @@ class DFSRecursiveTest {
 
         // given
         val vertices = setOf('s', 'a', 'b', 'c', 'd', 'e', 'x', 'y', 'z')
-        val graph = AdjacencyListGraph(vertices = vertices)
+        val graph = UndirectedAdjacencyListGraph(vertices = vertices)
 
         // when
         val reachableVertices = DFSRecursive.search(graph = graph, startingVertex = 's')
@@ -75,7 +75,7 @@ class DFSRecursiveTest {
             Edge('d', 'e')
         )
 
-        val graph = AdjacencyListGraph(vertices = vertices, edges = edges)
+        val graph = UndirectedAdjacencyListGraph(vertices = vertices, edges = edges)
 
         // when
         val reachableVertices = DFSRecursive.search(graph = graph, startingVertex = 's')
@@ -98,7 +98,7 @@ class DFSRecursiveTest {
             Edge('c', 'd')
         )
 
-        val graph = AdjacencyListGraph(vertices = vertices, edges = edges)
+        val graph = UndirectedAdjacencyListGraph(vertices = vertices, edges = edges)
 
         // when
         val reachableVertices = DFSRecursive.search(graph = graph, startingVertex = 's')
@@ -121,7 +121,7 @@ class DFSRecursiveTest {
             Edge('e', 's')
         )
 
-        val graph = AdjacencyListGraph(vertices = vertices, edges = edges)
+        val graph = UndirectedAdjacencyListGraph(vertices = vertices, edges = edges)
 
         // when
         val reachableVertices = DFSRecursive.search(graph = graph, startingVertex = 's')
@@ -146,7 +146,7 @@ class DFSRecursiveTest {
             Edge('x', 'y')
         )
 
-        val graph = AdjacencyListGraph(vertices = vertices, edges = edges)
+        val graph = UndirectedAdjacencyListGraph(vertices = vertices, edges = edges)
 
         // when
         val reachableVertices = DFSRecursive.search(graph = graph, startingVertex = 's')
@@ -169,7 +169,7 @@ class DFSRecursiveTest {
             Edge('d', 'e')
         )
 
-        val graph = AdjacencyListGraph(vertices = vertices, edges = edges)
+        val graph = UndirectedAdjacencyListGraph(vertices = vertices, edges = edges)
 
         // when
         val reachableVertices = DFSRecursive.search(graph = graph, startingVertex = 's')
@@ -185,7 +185,7 @@ class DFSRecursiveTest {
         val size = 10_000
         val vertices = (0..size).toSet()
         val edges = (0 until size).map { Edge(it, it + 1) }.toSet()
-        val graph = AdjacencyListGraph(vertices = vertices, edges = edges)
+        val graph = UndirectedAdjacencyListGraph(vertices = vertices, edges = edges)
 
         // when - then
         assertFailsWith<StackOverflowError> {

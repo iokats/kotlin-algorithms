@@ -1,7 +1,7 @@
 package com.iekatsatos.algorithms.graph.shortestpath
 
 import com.iekatsatos.algorithms.graph.Edge
-import com.iekatsatos.algorithms.graph.representation.AdjacencyListGraph
+import com.iekatsatos.algorithms.graph.representation.UndirectedAdjacencyListGraph
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import kotlin.test.assertEquals
@@ -22,7 +22,7 @@ class AugmentedBFSTest {
             Edge('d', 'e')
         )
 
-        val graph = AdjacencyListGraph(vertices = vertices, edges = edges)
+        val graph = UndirectedAdjacencyListGraph(vertices = vertices, edges = edges)
 
         // when
         val exception = assertThrows<NoSuchElementException> {
@@ -38,7 +38,7 @@ class AugmentedBFSTest {
 
         // given
         val vertices = setOf('s')
-        val graph = AdjacencyListGraph(vertices = vertices)
+        val graph = UndirectedAdjacencyListGraph(vertices = vertices)
 
         // when
         val distance = AugmentedBFS.shortestPath(graph = graph, startingVertex = 's')
@@ -53,7 +53,7 @@ class AugmentedBFSTest {
 
         // given
         val vertices = setOf('s', 'a', 'b', 'c', 'd', 'e', 'x', 'y', 'z')
-        val graph = AdjacencyListGraph(vertices = vertices)
+        val graph = UndirectedAdjacencyListGraph(vertices = vertices)
 
         // when
         val distance = AugmentedBFS.shortestPath(graph = graph, startingVertex = 's')
@@ -76,7 +76,7 @@ class AugmentedBFSTest {
             Edge('d', 'e'),
         )
 
-        val graph = AdjacencyListGraph(vertices = vertices, edges = edges)
+        val graph = UndirectedAdjacencyListGraph(vertices = vertices, edges = edges)
 
         // when
         val distance = AugmentedBFS.shortestPath(graph = graph, startingVertex = 's')
@@ -107,7 +107,7 @@ class AugmentedBFSTest {
             Edge('e', 's'),
         )
 
-        val graph = AdjacencyListGraph(vertices = vertices, edges = edges)
+        val graph = UndirectedAdjacencyListGraph(vertices = vertices, edges = edges)
 
         // when
         val distance = AugmentedBFS.shortestPath(graph = graph, startingVertex = 's')
@@ -147,7 +147,7 @@ class AugmentedBFSTest {
             Edge('d', 'e'),
         )
 
-        val graph = AdjacencyListGraph(vertices = vertices, edges = edges)
+        val graph = UndirectedAdjacencyListGraph(vertices = vertices, edges = edges)
 
         // when
         val distance = AugmentedBFS.shortestPath(graph = graph, startingVertex = 's')
@@ -178,7 +178,7 @@ class AugmentedBFSTest {
             Edge('d', 'e'),
         )
 
-        val graph = AdjacencyListGraph(vertices = vertices, edges = edges)
+        val graph = UndirectedAdjacencyListGraph(vertices = vertices, edges = edges)
 
         // when
         val distance = AugmentedBFS.shortestPath(graph = graph, startingVertex = 's')
@@ -209,7 +209,7 @@ class AugmentedBFSTest {
             Edge('d', 'e'),
         )
 
-        val graph = AdjacencyListGraph(vertices = vertices, edges = edges)
+        val graph = UndirectedAdjacencyListGraph(vertices = vertices, edges = edges)
 
         // when
         val distance = AugmentedBFS.shortestPath(graph = graph, startingVertex = 's')

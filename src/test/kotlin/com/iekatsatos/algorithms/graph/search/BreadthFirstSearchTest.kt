@@ -1,7 +1,7 @@
 package com.iekatsatos.algorithms.graph.search
 
 import com.iekatsatos.algorithms.graph.Edge
-import com.iekatsatos.algorithms.graph.representation.AdjacencyListGraph
+import com.iekatsatos.algorithms.graph.representation.UndirectedAdjacencyListGraph
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import kotlin.test.assertEquals
@@ -22,7 +22,7 @@ class BreadthFirstSearchTest {
             Edge('d', 'e')
         )
 
-        val graph = AdjacencyListGraph(vertices = vertices, edges = edges)
+        val graph = UndirectedAdjacencyListGraph(vertices = vertices, edges = edges)
 
         // when
         val exception = assertThrows<NoSuchElementException> {
@@ -38,7 +38,7 @@ class BreadthFirstSearchTest {
 
         // given
         val vertices = setOf('s')
-        val graph = AdjacencyListGraph(vertices = vertices)
+        val graph = UndirectedAdjacencyListGraph(vertices = vertices)
 
         // when
         val reachableVertices = BreadthFirstSearch.search(graph = graph, startingVertex = 's')
@@ -52,7 +52,7 @@ class BreadthFirstSearchTest {
 
         // given
         val vertices = setOf('s', 'a', 'b', 'c', 'd', 'e', 'x', 'y', 'z')
-        val graph = AdjacencyListGraph(vertices = vertices)
+        val graph = UndirectedAdjacencyListGraph(vertices = vertices)
 
         // when
         val reachableVertices = BreadthFirstSearch.search(graph = graph, startingVertex = 's')
@@ -74,7 +74,7 @@ class BreadthFirstSearchTest {
             Edge('d', 'e'),
         )
 
-        val graph = AdjacencyListGraph(vertices = vertices, edges = edges)
+        val graph = UndirectedAdjacencyListGraph(vertices = vertices, edges = edges)
 
         // when
         val reachableVertices = BreadthFirstSearch.search(graph = graph, startingVertex = 's')
@@ -97,7 +97,7 @@ class BreadthFirstSearchTest {
             Edge('e', 's'),
         )
 
-        val graph = AdjacencyListGraph(vertices = vertices, edges = edges)
+        val graph = UndirectedAdjacencyListGraph(vertices = vertices, edges = edges)
 
         // when
         val reachableVertices = BreadthFirstSearch.search(graph = graph, startingVertex = 's')
@@ -129,7 +129,7 @@ class BreadthFirstSearchTest {
             Edge('d', 'e'),
         )
 
-        val graph = AdjacencyListGraph(vertices = vertices, edges = edges)
+        val graph = UndirectedAdjacencyListGraph(vertices = vertices, edges = edges)
 
         // when
         val reachableVertices = BreadthFirstSearch.search(graph = graph, startingVertex = 's')
@@ -154,7 +154,7 @@ class BreadthFirstSearchTest {
             Edge('x', 'y')
         )
 
-        val graph = AdjacencyListGraph(vertices = vertices, edges = edges)
+        val graph = UndirectedAdjacencyListGraph(vertices = vertices, edges = edges)
 
         // when
         val reachableVertices = BreadthFirstSearch.search(graph = graph, startingVertex = 's')
@@ -177,7 +177,7 @@ class BreadthFirstSearchTest {
             Edge('d', 'e'),
         )
 
-        val graph = AdjacencyListGraph(vertices = vertices, edges = edges)
+        val graph = UndirectedAdjacencyListGraph(vertices = vertices, edges = edges)
 
         // when
         val reachableVertices = BreadthFirstSearch.search(graph = graph, startingVertex = 's')
@@ -200,7 +200,7 @@ class BreadthFirstSearchTest {
             Edge('d', 'e'),
         )
 
-        val graph = AdjacencyListGraph(vertices = vertices, edges = edges)
+        val graph = UndirectedAdjacencyListGraph(vertices = vertices, edges = edges)
 
         // when
         val reachableVertices = BreadthFirstSearch.search(graph = graph, startingVertex = 's')
