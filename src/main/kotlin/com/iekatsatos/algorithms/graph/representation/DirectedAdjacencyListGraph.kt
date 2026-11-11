@@ -26,7 +26,7 @@ import com.iekatsatos.algorithms.graph.Edge
  *   or construction fails.
  * @throws IllegalArgumentException if any edge references a vertex that is not in [vertices]
  */
-data class DirectedAdjacencyListGraph<T>(
+internal data class DirectedAdjacencyListGraph<T>(
     override val vertices: Set<T> = setOf(),
     override val edges: Set<Edge<T>> = setOf()
 ) : DirectedGraph<T> {

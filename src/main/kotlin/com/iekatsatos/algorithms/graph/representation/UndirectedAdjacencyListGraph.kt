@@ -20,7 +20,7 @@ import com.iekatsatos.algorithms.graph.UndirectedGraph
  *
  * @constructor validates that [edges] only reference declared [vertices] and builds the internal adjacency list.
  */
-data class UndirectedAdjacencyListGraph<T>(
+internal data class UndirectedAdjacencyListGraph<T>(
     override val vertices: Set<T> = setOf(),
     override val edges: Set<Edge<T>> = setOf()
 ): UndirectedGraph<T> {
